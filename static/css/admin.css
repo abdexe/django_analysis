@@ -1,0 +1,12 @@
+#header {
+    background: #f3f3f1;
+    padding: 18px;
+}
+
+h1 .orange {
+    color: #FF4433;
+}
+
+.submit-row input{
+    width: 100%;
+}

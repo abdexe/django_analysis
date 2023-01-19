@@ -1,0 +1,265 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} | PROFILE {% endblock %}
+{% block content %}
+<style>
+  body{
+    overflow: hidden;
+  }
+  .wrapper-container{
+    position: fixed;
+    margin-left: 17rem;
+    width: 75%;
+    overflow: scroll;
+    height: 80%;
+  }
+  @media (max-width:1200px){
+    .wrapper-container.chart{
+      gap: 20px;
+  }
+  .wrapper-container{
+    position: fixed;
+    margin-left: 17rem;
+    width: 75%;
+    overflow: scroll;
+    height: 80%;
+  }
+   
+  }
+  @media (max-width:1000px){
+    .wrapper-container{
+      margin-left: 7rem;
+      width: 85%;
+    }
+  }
+  @media (max-width:900px){
+    .wrapper-container{
+      margin-left: 4rem;
+      width: 80%;
+    }
+    
+    
+  }
+ 
+  .wrapper-container .chart-card{
+        width: 400px;
+        height: 300px;
+        
+    }
+  .wrapper-container.chart{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 100px;
+    }
+    .print {
+        padding: 10px 0;
+        width: 150px;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 15px;
+        background-color: rgb(91, 201, 91);
+        color: #fff;
+        text-transform: capitalize;
+        border: none;
+        outline: 0;
+    }
+    .print:hover{
+        transform: scale(1.02);
+        transition: transform 300ms ease;
+    }
+    .print a{
+        color: #fff;
+    }
+    .print:active{
+        border: 1px solid orange;
+    }
+    .print.send{
+        background-color: rgb(245, 128, 128);
+    }
+
+  @media (max-width:600px){
+  .wrapper-container.chart{
+        grid-template-columns: repeat(1,1fr);
+    }
+  .wrapper-container.chart h2{
+       font-size: 18px;
+    }
+  .wrapper-container .chart-card{
+      width: 300px;
+      height: 200px;
+      
+  }
+  .wrapper-container .chart-card.pie{
+    margin-left: 1rem;
+    
+  }
+  .wrapper-container .chart-card.polar{
+   margin-left: 2rem;
+  
+  }
+    }
+</style>
+<section class="wrapper">
+    <div class="wrapper-sidebar">
+     {% include 'partials/_sidebar.html' %}   
+    </div>
+    <div class="wrapper-container chart">
+        <!-- BAR CHART -->
+        <div class="statistique" style="margin: 1rem;">
+          <h2 style="color: rgb(118, 170, 206);">Data Analysis of the survey</h2>
+          <p style="margin-top: 1rem;">Number of answers: <span style="color: orangered;">{{answers}}</span></p>
+          <p style="margin-top: 1rem;">Male: <span style="color: orangered;">{{male}}</span></p>
+          <p style="margin-top: 1rem;">Female: <span style="color: orangered;">{{female}}</span></p>
+        </div>
+        
+        <div class="chart-card">
+            <div class="charts">
+                <canvas  id="myChart"></canvas>
+                
+              </div>
+              
+              <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+              
+              <script>
+                const ctx = document.getElementById('myChart');
+                
+              
+                new Chart(ctx, {
+                  type: 'bar',
+                  data: {
+                    labels: ['الذكور','الاناث'],
+                    datasets: [{
+                      label: 'الاجابات',
+                      data: [{{male}}, {{female}}],
+                      borderWidth: 1
+                    }]
+                  },
+                  options: {
+                    scales: {
+                      y: {
+                        beginAtZero: true
+                      }
+                    }
+                  }
+                });
+
+                
+              </script>
+              
+        </div>
+        <!-- PIE CHART -->
+        <div class="chart-card polar">
+            <canvas  id="myChart2"></canvas>
+            <script>
+                const ctx2 = document.getElementById('myChart2');
+             // pie chart
+             new Chart(ctx2, {
+                  type: 'polarArea',
+                  data: {
+                    labels: ['1 STAR', '2 STAR', ' 3 STAR', '4 STAR', '5 STAR'],
+                    datasets: [{
+                      label: '# of Votes',
+                      data: [{{star1}}, {{star2}}, {{star3}}, {{star4}},{{star5}}],
+                      borderWidth: 1
+                    }]
+                  },
+                  options: {
+                    scales: {
+                      y: {
+                        beginAtZero: true
+                      }
+                    }
+                  }
+                });
+            </script>
+          </div>
+         <!-- LINE CHART -->
+          <div class="chart-card pie">
+            <canvas  id="myChart3"></canvas>
+            <script>
+                const ctx3 = document.getElementById('myChart3');
+             // pie chart
+             new Chart(ctx3, {
+                  type: 'pie',
+                  data: {
+                    labels: ['الشهر الماضي', 'منذ 6 أشهر', 'منذ عام تقريبا', 
+                    'منذ بداية الاعلان عن العلامة التجارية',],
+                    datasets: [{
+                      label: '# of Votes',
+                      data: [{{last_month}},{{six_month_ago}},{{last_year}},{{from_start}}],
+                      borderWidth: 1
+                    }]
+                  },
+                  options: {
+                    scales: {
+                      y: {
+                        beginAtZero: true
+                      }
+                    }
+                  }
+                });
+            </script>
+        </div>
+        <!-- POLAR CHART -->
+        <div class="chart-card">
+            <canvas  id="myChart4"></canvas>
+            <script>
+                const ctx4 = document.getElementById('myChart4');
+             // line chart
+             new Chart(ctx4, {
+                  type: 'line',
+                  data: {
+                    labels: ['من العائلة أو الأصدقاء أو الزملاء', 
+                    'وسائل التواصل الاجتماعي',
+                     'اللوحات الاعلانية', 'اعلانات تطبيقات الجوال','الاعلانات التلفزونية', 'طريقة أخرى'],
+                    datasets: [{
+                      label: 'مصدر الزوار',
+                      data: [{{from_family}},{{from_socialmedia}},{{from_tbleshow}},
+                      {{from_tvshow}},{{from_application}},{{from_other}}],
+                      borderWidth: 1
+                    }]
+                  },
+                  options: {
+                    scales: {
+                      y: {
+                        beginAtZero: true
+                      }
+                    }
+                  }
+                });
+            </script>
+        </div>
+        <!-- POLAR CHART -->
+        <div class="chart-card">
+          <canvas  id="myChart5"></canvas>
+          <script>
+              const ctx5 = document.getElementById('myChart5');
+           // pie chart
+           new Chart(ctx5, {
+                type: 'line',
+                data: {
+                  labels: ['القاهرة','المنية','الجيزة','دندرة','الاسكندرية'],
+                  datasets: [{
+                    label: 'مصدر الزوار حسب بعض المدن',
+                    data: [{{cairo}},{{MinyA}},{{Giza}},{{Dandarah}},{{Alexandria}}],
+                    borderWidth: 1
+                  }]
+                },
+                options: {
+                  scales: {
+                    y: {
+                      beginAtZero: true
+                    }
+                  }
+                }
+              });
+          </script>
+      </div>
+        
+        <!-- <button class="print"> <a href="{% url 'generate_pdf' %}">print report</a> </button>
+        <button class="print send" style="margin-left: 200px;">send email</button> -->
+    </div>
+    
+</section>
+
+{% endblock %}

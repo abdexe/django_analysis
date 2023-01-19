@@ -1,0 +1,199 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} | WELCOME {% endblock %}
+
+{% block content %}
+<!-- header -->
+<header class="header" id="header">
+    <div class="left">
+       <p>Welcome to OPENION WEBSITE</p>
+       <h1>We make <span class="blue">openions</span></h1> 
+       <h1><span class="blue">Analysis</span>&<span class="orange">Influence</span></h1> 
+       <h1>decision-makers</h1>
+    </div>
+    <div class="right">
+       <img src="{% static 'images/banner.webp' %}"  alt="">
+    </div>
+ </header>
+ <!-- services -->
+ <section class="services" id="services">
+    <div class="items">
+        <div class="card">
+            <img src="{% static 'images/data_analysis.webp' %}" alt="">
+            <div class="card-content">
+                <h3>Data Analysis</h3>
+                <p>officia dolores est vero.
+                officia dolores est vero</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="{% static 'images/data_reporting.webp' %}" alt="">
+            <div class="card-content">
+                <h3>Data Reporting</h3>
+                <p>officia dolores est vero.
+                officia dolores est vero</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="{% static 'images/data_analytics.webp' %}"alt="">
+            <div class="card-content">
+                <h3>Web Analytics</h3>
+                <p>officia dolores est vero.
+                officia dolores est vero</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="{% static 'images/seo_suggestions.webp' %}" alt="">
+            <div class="card-content">
+                <h3>SEO Suggestions</h3>
+                <p>officia dolores est vero.
+                officia dolores est vero</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- about -->
+<section class="about" id="about">
+    <img src="{% static 'images/portfolio.webp' %}" alt="">
+    <div class="about-content">
+        <h1>what is <span class="blue">openion website?</span></h1>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+             Deleniti ut id corrupti deserunt impedit repellat provident 
+             voluptatibus saepe sequi, atque obcaecati odit incidunt 
+            repudiandae quam reiciendis ea accusantium quo mollitia!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Deleniti ut id corrupti deserunt impedit repellat provident 
+            voluptatibus saepe sequi, atque obcaecati odit incidunt 
+           repudiandae quam reiciendis ea accusantium quo mollitia!
+           Lorem ipsum dolor sit amet consectetur adipisicing elit.
+           Deleniti ut id corrupti deserunt impedit repellat provident 
+           voluptatibus saepe sequi, atque obcaecati odit incidunt 
+          repudiandae quam reiciendis ea accusantium quo mollitia!
+        </p>
+    </div>
+</section>
+<!-- offers -->
+<section class="offers" id="offers">
+    <h1>See what our agency <span class="blue">offers</span> <br> & what we <span class="orange">provide</span> </h1>
+    <div class="items">
+        <div class="card">
+          <img src="{% static 'images/a.webp' %}" alt="">
+          <p>Data Reporting</p>
+        </div>
+        <div class="card">
+            <img src="{% static 'images/b.webp' %}" alt="">
+            <p>Data Analysis</p>
+        </div>
+        <div class="card">
+            <img src="{% static 'images/c.webp' %}" alt="">
+            <p>Data Analytics</p>
+        </div>
+        <div class="card">
+            <img src="{% static 'images/d.webp' %}" alt="">
+            <p>SEO Suggestions</p>
+        </div>
+    </div>
+</section>
+<!-- NEWS -->
+<section class="news" id="news">
+    <div class="left">
+        <img class="image" src="{% static 'images/form.webp' %}" alt="">
+        <div class="card">
+            <div class="card-up">
+              <p><img src="{% static 'images/data.svg' %}" alt="">30 JANVIER 2023</p>
+              <p><img src="{% static 'images/data.svg' %}" alt="">Business ideas</p>
+              <p><img src="{% static 'images/data.svg' %}" alt="">Customer Reviews</p>
+            </div>
+            <div class="card-down">
+                <h1>SEO Agency & Digital Marketing</h1>
+                <p>Lorem ipsum, dolor sit amet consectetur
+                dicta provident non repudiandae totam mollitia!</p>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <div class="card">
+            <p><img src="{% static 'images/data.svg' %}" alt="">30 JANVIER 2023</p>
+            <h1>New webistes & hackranks</h1>
+            <p>Lorem ipsum, dolor sit amet consectetur</p>
+        </div>
+        <div class="card">
+            <p><img src="{% static 'images/data.svg' %}" alt="">30 JANVIER 2023</p>
+            <h1>SEO analytics & content ideas</h1>
+            <p>Lorem ipsum, dolor sit amet consectetur</p>
+        </div>
+        <div class="card">
+            <p><img src="{% static 'images/data.svg' %}" alt="">30 JANVIER 2023</p>
+            <h1>SEO tips & digital marketing</h1>
+            <p>Lorem ipsum, dolor sit amet consectetur</p>
+        </div>
+    </div>
+</section>
+<!-- FORM -->
+<section class="contact" id="contact">
+    <h2 class="hidden" >Feel Free to send us a <span class="blue">Message</span>   About your <span class="orange">website needs</span> </h2>
+    <div class="left">
+       <h2>Feel Free to send us a Message  About your website needs</h2>
+       <p>
+        <p> temporibus laudantium distinctio voluptate? Adipisci fugit
+        voluptates hic autem!Adipisci fugit voluptates hic autem!
+        temporibus laudantium distinctio voluptate? Adipisci fugit
+        voluptates hic autem!Adipisci fugit voluptates hic autem!</p>
+       <div class="down">
+        <p>For any anquiry ,Call Us:</p>
+        <p><img src="data.svg" alt="">000-000-000</p>
+       </div>
+    </div>
+    <div class="right">
+      <form action="{% url 'contact' %}" id="formIndex" method="POST" >
+        {% csrf_token %}
+        <div class="form-control">
+            <input type="text" name="name" placeholder="Name" class="name" >
+            <input type="text" name="surname" placeholder="Surname" class="surname" required>
+        </div>
+        <div class="form-control">
+            <input type="text" name="email" placeholder="Your Email" class="email" required >
+        </div>
+        <div class="form-control">
+            <textarea  placeholder="Message" name="message" id="" cols="30" rows="10" required></textarea>
+        </div>
+      </form>
+      
+     <a href="javascript:{document.getElementById('formIndex').submit()}" ><button class="send">Send Message</button></a>
+    </div>
+</section>
+<!-- FORM SECTION -->
+<!--  
+<section class="form-section" id="form-section">
+   <div class="form-left">
+   <a class="btnForm" href="#form-section" >Contact Us</a>
+    <h2>Feel Free to send us a Message <br> About your website needs</h2>
+    <p> temporibus laudantium distinctio voluptate? Adipisci fugit voluptates hic autem! Adipisci fugit voluptates hic autem!</p>
+    <div class="contact-us">
+        <p>For any anquiry ,Call Us: </p>
+        <p class="phone"><i class=""></i>000-000-0000</p>
+    </div>
+   </div>
+   <div class="form-right">
+    <form action="{% url 'contact' %}" id="formIndex" method="POST" class="form">
+        {% csrf_token %}
+    <div class="form-control">
+        <input type="text" name="name" placeholder="Name" class="name" >
+        <input type="text" name="surname" placeholder="Surname" class="surname" required>
+    </div>
+    <div class="form-control">
+        <input type="text" name="email" placeholder="Your Email" class="email" required >
+    </div>
+    <div class="form-control" style="margin-bottom: 1rem;">
+        <textarea  placeholder="Message" name="message" id="" cols="30" rows="10" required></textarea>
+    </div>
+    </form>
+    <a href="javascript:{document.getElementById('formIndex').submit()}"><button class="send">Send Message</button></a>
+   </div>
+</section>-->
+{% endblock %}

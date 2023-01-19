@@ -1,0 +1,278 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} | SURVEY {% endblock %}
+{% block content %}
+<style>
+    
+    body{
+        overflow: hidden;
+        scroll-behavior: smooth;
+    }
+    .wrapper_p{
+        overflow: hidden;
+    }
+    .wrapper_p .survey-container{
+    overflow-y: scroll;
+    position: fixed;
+    overflow-x: hidden;
+}
+@media (max-width:1000px){
+    .wrapper_p .survey-container{
+    left: 7rem;
+    padding: 1rem;
+    width: 85%;
+    }
+}
+@media (max-width:900px){
+    .wrapper_p .survey-container{
+    left: 4rem;
+    padding: 1rem;
+    width: 87%;
+    top: 95px;
+    }
+}
+@media (max-width:600px){
+    .wrapper_p .survey-container{
+    left: 4rem;
+    padding: 1rem;
+    width: 80%;
+    top: 85px;
+    }
+    .survey-container .logo {
+        top: 3rem;
+    }
+    .survey-container .question {
+        padding-right: 0;
+      }
+}
+   
+</style>
+<section class="wrapper_p">
+    <div class="wrapper-sidebar">
+     {% include 'partials/_sidebar.html' %}   
+    </div>
+        <div class="survey-container">
+            <div class="logo">
+                <img src="{% static 'images/adidas.png' %}" alt="">
+            </div>
+            <div class="container" >
+                <p class="question">هل سمعت عن اسم العلامة التجارية التالية من قبل؟</p>
+                <div class="form-control">
+                    <label>نعم</label>
+                    <input type="radio" name="hear"  value="نعم" onclick="showText(0)">
+                </div>
+                <div class="form-control">
+                    <label>لا</label>
+                    <input type="radio" name="hear" value="لا" onclick="showText(1)">
+                </div>
+                
+                <!-- FIRST QUESTIONS -->
+                <form action="{% url 'survey' %}"  method="POST" id="first" style="display: none;">
+                    {% csrf_token %}
+                    <input type="hidden" name="user_id" value="{{ user.id }}">
+                    <input type="hidden" name="user_age" value="{{ user.age }}">
+                    <input type="hidden" name="user_country" value="{{ user.country }}">
+                <div class="line"></div>
+                <p class="question">متى كانت أول مرة سمعت فيها عن علامتنا التجارية؟ </p>
+                <div class="form-control">
+                    <label>الشهر الماضي</label>
+                    <input type="radio" name="hear_time" value="الشهر الماضي" required >
+                </div>
+                <div class="form-control">
+                    <label>منذ 6 أشهر</label>
+                    <input type="radio" name="hear_time" value="منذ 6 أشهر" required >
+                </div>
+                <div class="form-control">
+                    <label>منذ عام تقريبا</label>
+                    <input type="radio" name="hear_time" value="منذ عام تقريبا" required >
+                </div>
+                <div class="form-control">
+                    <label>منذ بداية الاعلان عن العلامة التجارية</label>
+                    <input type="radio" name="hear_time" value="منذ بداية الاعلان عن العلامة التجارية" required >
+                </div>
+                <div class="line"></div>
+                <!-- location seeing -->
+                <p class="question">أين رأيت أو سمعت عن علامتنا التجارية؟(اختر كل ما ينطبق)</p>
+                    <div class="form-control">
+                        <label>من العائلة أو الأصدقاء أو الزملاء</label>
+                        <input type="checkbox" name="see[]" value="من العائلة أو الأصدقاء أو الزملاء" >
+                    </div>
+                    <div class="form-control">
+                        <label>وسائل التواصل الاجتماعي</label>
+                        <input type="checkbox" name="see[]" value="وسائل التواصل الاجتماعي"  >
+                    </div>
+                    <div class="form-control">
+                        <label>اللوحات الاعلانية</label>
+                        <input type="checkbox" name="see[]" value="اللوحات الاعلانية" >
+                    </div>
+                    <div class="form-control">
+                        <label>اعلانات تطبيقات الجوال</label>
+                        <input type="checkbox" name="see[]" value="اعلانات تطبيقات الجوال">
+                    </div>
+                    <div class="form-control">
+                        <label>الاعلانات التلفزونية</label>
+                        <input type="checkbox" name="see[]" value="الاعلانات التلفزونية">
+                    </div>
+                    <div class="form-control">
+                        <label>طريقة أخرى</label>
+                        <input type="checkbox" name="see[]" value="طريقة أخرى"  >
+                    </div>
+                    <div class="line"></div>
+                    <!-- heared time -->
+                    <p class="question">في الأيام القليلة الماضية كم مرة سمعت فيها أشخاص يتحدثون عن علامتنا التجارية؟</p>
+                    <div class="form-control">
+                        <label>مرة أو مرتين</label>
+                        <input type="radio" name="speaking" value="مرة أو مرتين" required>
+                    </div>
+                    <div class="form-control">
+                        <label>بعض الأوقات</label>
+                        <input type="radio" name="speaking" value="بعض الأوقات" required>
+                    </div>
+                    <div class="form-control">
+                        <label>الكثير من الأشخاص</label>
+                        <input type="radio" name="speaking" value="الكثير من الأشخاص" required>
+                    </div>
+                    <div class="form-control">
+                        <label>لم أسمع أشخاص يتحدثون عن علامتكم التجارية</label>
+                        <input type="radio" name="speaking" value="لم أسمع أشخاص يتحدثون عن علامتكم التجارية" required>
+                    </div>
+                    <div class="line"></div>
+                    <!-- buy from us -->
+                    <p class="question">هل اشتريت منتجاتنا من قبل؟</p>
+                    <div class="form-control">
+                        <label>نعم</label>
+                        <input type="radio" name="buy_before"  value="نعم" required>
+                    </div>
+                    <div class="form-control">
+                        <label>لا</label>
+                        <input type="radio" name="buy_before" value="لا" required>
+                    </div>
+                    <div class="line"></div>
+                    <!-- tested products -->
+                    <p class="question">أي من المنتجات التجارية جربته؟ (اختر كل ما ينطبق)</p>
+                    <div class="form-control">
+                        <label>ساعة رياضية</label>
+                        <input type="checkbox" name="product[]" value="ساعة رياضية ">
+                    </div>
+                    <div class="form-control">
+                        <label>بذلة رياضية</label>
+                        <input type="checkbox" name="product[]" value="بذلة رياضية">
+                    </div>
+                    <div class="form-control">
+                        <label>حذاء رياضي</label>
+                        <input type="checkbox" name="product[]" value="حذاء رياضي">
+                    </div>
+                    <div class="line"></div>
+                     <!-- experience -->
+                    <label>كيف كانت تجربتك مع المنتج؟ </label>
+                   <span style="margin-right: 10px;" class="star-rating">
+                      <input type="radio" name="rating1" value="1" required><i></i>
+                      <input type="radio" name="rating1" value="2" required><i></i>
+                      <input type="radio" name="rating1" value="3" required><i></i>
+                      <input type="radio" name="rating1" value="4" required><i></i>
+                      <input type="radio" name="rating1" value="5" required><i></i>
+                   </span>
+                   <div class="line"></div>
+                    <!-- satisfaction -->
+                   <label style="margin-top:2rem" class="label">ما مدى رضاك عن منتجاتنا و خدماتنا؟ </label>
+                   <span style="margin-right: 10px;" class="star-rating two">
+                      <input type="radio" name="rating2" value="1" required><i></i>
+                      <input type="radio" name="rating2" value="2" required><i></i>
+                      <input type="radio" name="rating2" value="3" required><i></i>
+                      <input type="radio" name="rating2" value="4" required><i></i>
+                      <input type="radio" name="rating2" value="5" required><i></i>
+                   </span>
+                   <div class="line"></div>
+                   <!-- probabilites -->
+                   <label class="label">احتمالية أن توصي صديق بمنتجاتنا أو خدماتنا؟</label>
+                  <span class="scale-rating">
+                    <label value="10">
+                    <input type="radio" value="10" name="rating" required >
+                    <label style="width:100%;"></label>
+                    </label>
+                    <label value="20">
+                    <input type="radio" value="20" name="rating" required >
+                    <label style="width:100%;"></label>
+                    </label>
+                    <label value="30">
+                    <input type="radio" value="30" name="rating" required>
+                    <label style="width:100%;"></label>
+                    </label>
+                    <label value="40">
+                    <input type="radio" value="40" name="rating" required>
+                    <label style="width:100%;"></label>
+                    </label>
+                    <label value="50">
+                    <input type="radio" value="50" name="rating" required>
+                    <label style="width:100%;"></label>
+                    </label>
+                    <label value="60">
+                    <input type="radio" value="60" name="rating" required>
+                    <label style="width:100%;"></label>
+                    </label>
+                    <label value="70">
+                    <input type="radio" value="70" name="rating" required>
+                    <label style="width:100%;"></label>
+                    </label>
+                    <label value="80">
+                    <input type="radio" value="80" name="rating" required>
+                    <label style="width:100%;"></label>
+                    </label>
+                    <label value="90">
+                    <input type="radio"  value="90" name="rating" required>
+                    <label style="width:100%;"></label>
+                    </label>
+                    <label value="100">
+                    <input type="radio"  value="100" name="rating" required>
+                    <label style="width:100%;"></label>
+                    </label>
+                  </span>
+                  <div class="line"></div>
+                  <!-- remebers -->
+                  <p  class="question" style="margin-right: 5px;">هل يتبادر في ذهنك علامة تجارية أخرى أثناء التفكير في منتجاتنا؟ </p>
+                <div style="margin-right: 10px;" class="form-control">
+                    <label>نعم</label>
+                    <input type="radio" name="other" value="نعم" required>
+                </div>
+                <div style="margin-right: 10px;" class="form-control">
+                    <label>لا</label>
+                    <input type="radio" name="other" value="لا" required>
+                </div>
+                <div class="line"></div>
+                <!-- suggestion -->
+                <p class="question" style="margin-right: 5px;">من بين العلامات التجارية التي تقدم منتجات مماثلة: ماهي العلامة التجارية الأفضل برأيك؟ </p>
+                <div class="form-control">
+                    <input type="text" name="best_brand" id="text" class="text" required>
+                </div>
+                <div style="margin-top: 1rem;" class="line"></div>
+                <!-- comment -->
+                <p class="question" style="margin-right: 5px;">رأي أخر أو تعليق</p>
+                <div class="form-control">
+                    <textarea name="comment" id="" cols="30" rows="10" class="textarea" required></textarea>
+                </div>
+                <button type="submit" class="btn" >أرسل الان</button>
+                </form>
+                <!-- SECOND QUESTIONS -->
+                <form action="" id="second" style="display: none;" >
+                    <button type="submit" class="btn">أرسل الان</button>
+                </form>
+                
+            </div>
+        </div>
+    
+</section>
+<script>
+    function showText(x){
+      if(x==0){
+        document.getElementById('first').style.display='flex'
+        document.getElementById('second').style.display='none'
+      }else{
+        document.getElementById('first').style.display='none'
+        document.getElementById('second').style.display='flex'
+      }
+    }
+  
+
+</script>
+
+{% endblock %}

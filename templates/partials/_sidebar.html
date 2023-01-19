@@ -1,0 +1,37 @@
+{% load static %}
+<section class="dashbord">
+    {% if user.is_staff %}
+    <ul>
+        <li>
+            <a href="{% url 'profile' %}"><img src="{% static 'images/profile.svg' %}" alt=""><p>Profile</p></a>
+        </li>
+        <li>
+            <a href="{% url 'companie' %}"><img src="{% static 'images/companie.png' %}" alt=""><p>Companies</p> </a>
+        </li>
+        <li>
+            <a href="{% url 'survey' %}"><img src="{% static 'images/survey.svg' %}" alt=""><p>Questionnaires</p> </a>
+        </li>
+        <li>
+            <a href="{% url 'analytics' %}"><img src="{% static 'images/chart.svg' %}" alt=""><p>Data Analysis</p></a>
+        </li>
+        <li>
+            <a href="javascript:{document.getElementById('logout').submit()}"><img src="{% static 'images/exit.svg' %}" alt=""><p>Logout</p></a>
+        </li>
+    </ul>
+    {% else %}
+    <ul>
+        <li>
+            <a href="{% url 'profile' %}"><img src="{% static 'images/profile.svg' %}" alt=""><p>Profile</p></a>
+        </li>
+        <li>
+            <a href="{% url 'companie' %}"><img src="{% static 'images/companie.png' %}" alt=""><p>Companies</p></a>
+        </li>
+        <li>
+            <a href="{% url 'survey' %}"><img src="{% static 'images/survey.svg' %}" alt=""><p>Questionnaires</p></a>
+        </li>
+        <li>
+            <a href="javascript:{document.getElementById('logout').submit()}"><img src="{% static 'images/exit.svg' %}" alt=""><p>Logout</p></a>
+        </li>
+    </ul>
+    {% endif %}
+</section>

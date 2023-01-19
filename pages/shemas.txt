@@ -1,0 +1,54 @@
+MODEL /DB FIELDS
+
+### USER
+### QUESTIONAIRE_DATA_CASE_YES
+id:INT
+flisten: STR
+fview: STR
+nviews:STR
+bproduct: boolean
+uproduct: array[]
+fproduct: stars
+sproduct: stars
+rproduct: range
+oproducts: boolean
+bsproduct: STR
+message:STR
+client (foreign key from [client])
+
+### QUESTIONAIRE_DATA_CASE_NO
+###Listing
+id: INT
+title: STR
+price: STR
+list_date: STR
+photo_main:STR
+photo_1:
+photo_2:
+vote: number
+user (foreign key from [USER])
+### client
+id: INT
+name:STR
+country:STR
+age:INT
+email:STR
+photo:DEFAULT
+
+### chart_histograme
+id: INT
+is_published: true
+title: STR
+
+### chart_circle
+id: INT
+is_published: true
+title: STR
+
+###CONTACT
+id:STR
+name:STR
+surname:STR
+email:STR
+message:STR
+contact_date:STR

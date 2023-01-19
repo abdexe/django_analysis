@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Custom -->
+    <!-- Chart js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.1.1/chart.min.js" 
+    integrity="sha512-MC1YbhseV2uYKljGJb7icPOjzF2k6mihfApPyPhEAo3NsLUW0bpgtL4xYWK1B+1OuSrUkfOTfhxrRKCz/Jp3rQ==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- stylesheet css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.media.css' %}">
+    <link rel="stylesheet" href="{% static 'css/scrollbar.css' %}">
+    <title>OPENION {% block title %} {% endblock %} </title>
+</head>
+<body>
+  <!-- NAVBAR -->
+ {% include 'partials/_navbar.html' %}
+ {% include 'partials/menu_sidebar.html' %}
+<!-- MAIN CONTENT -->
+    {% block content %} {% endblock %}
+<!-- END MAIN CONTENT -->
+
+   <!-- FOOTER -->
+ {% include 'partials/_footer.html' %}
+    <script src="{% static 'js/script.js' %}" ></script>
+   
+</body>
+</html>

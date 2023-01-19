@@ -1,0 +1,81 @@
+{% load static %}
+
+<style>
+ 
+</style>
+<div class="wrapper-navbar ">
+    <section class="navbar" id="navbar">
+        <div class="logo">
+            <h1>OPENION <span>WEBSITE</span></h1>
+        </div>
+        <div class="menu-btn">
+            <img class="show active" src="{% static 'images/menu-icon.svg' %}" alt="">
+            <img class="close" src="{% static 'images/close-icon.svg' %}" alt="">
+        </div>
+        <nav>
+            {% if user.is_authenticated %}
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Offers</a></li>
+                <li><a style="background-color: transparent;color:#4682B4" href="{% url 'profile' %}">Welcome ({{user.username}})</a></li>
+            </ul>
+            <form action="{% url 'logout' %}" method="POST" id="logout">
+                {% csrf_token %}
+                <input type="hidden">
+             </form>
+            {% else %}
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Offers</a></li>
+                <li><a href="{% url 'login' %}">Sign In</a></li>
+            </ul>
+            {% endif %}
+        </nav>
+    </section>
+    <aside class="nav-aside" style="position: absolute; z-index: 100; width:100%;">
+        <nav>
+            {% if user.is_authenticated %}
+            <ul>
+                <li><a style="background-color: transparent;color:#4682B4" href="{% url 'profile' %}">{{user.username}}</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Offers</a></li>
+                <li><a href="javascript:{document.getElementById('logout').submit()}">Logout</a></li>
+            </ul>
+            <form action="{% url 'logout' %}" method="POST" id="logout">
+                {% csrf_token %}
+                <input type="hidden">
+             </form>
+            {% else %}
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Offers</a></li>
+                <li><a href="{% url 'login' %}">Sign In</a></li>
+            </ul>
+            {% endif %}
+        </nav>
+    </aside>
+</div>
+    <script>
+        const wrapper_navbar = document.querySelector('.wrapper-navbar')
+        const menu_toggle = document.querySelector('.menu-btn')
+        const showIcon = document.querySelector('.show')
+        const closeIcon = document.querySelector('.close')
+        menu_toggle.addEventListener('click',()=>{
+            if(wrapper_navbar.classList.contains('active')){
+                wrapper_navbar.classList.remove('active')
+                showIcon.classList.add('active')
+                closeIcon.classList.remove('active')
+            }else {
+                wrapper_navbar.classList.add('active')
+                closeIcon.classList.add('active')
+                showIcon.classList.remove('active')
+            }
+        })
+    </script>

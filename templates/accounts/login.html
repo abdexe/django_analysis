@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} | LOGIN {% endblock %}
+{% block content %}
+
+  <section class="register" id="register">
+    <div class="cont">
+      <div class="cont-top">
+           <img src="{% static 'images/login.svg' %}"  alt=""><h4>Login To account</h4>
+      </div>
+      <!-- Alerts -->
+      {% include 'partials/_alerts.html' %}
+      <div class="cont-content">
+        <form action="{% url 'login' %}" method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+            <input type="text" name="username" placeholder="Username" class="form-control" required>
+          </div>
+         
+          <div class="form-group">
+            <input type="password" name="password" placeholder="Password" class="form-control" required>
+          </div>
+          <input type="submit" value="Login">
+        </form>
+        <p>You don't Have an Account? <span><a href="{% url 'register' %}">Sign Up</a> </span></p>
+      </div>
+    </div>
+  </section>
+
+<script>
+  const aleert = document.querySelector('.aleert')
+  const aleert_btn = document.querySelector('.aleert-btn')
+  aleert_btn.addEventListener('click',()=>aleert.remove())
+  setTimeout(()=>{
+     aleert.remove()
+  },3000)
+</script>
+
+
+{% endblock %}

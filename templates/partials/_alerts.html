@@ -1,0 +1,23 @@
+{% if messages %}
+  {% for message in messages %}
+    <div  class="aleert {{ message.tags }}">
+          <button class="aleert-btn">X</button>
+          <div class="aleert-content">
+          <strong>
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+              ERROR:
+            {% else %}
+              {{ message.tags | title }}
+            {% endif %}
+          </strong>
+            <p style="font-size: 15px;" class="aleert-text">
+              {{message}}
+            </p>
+          </div>
+    </div>
+  {% endfor %}
+{% endif %}
+
+
+  
+  

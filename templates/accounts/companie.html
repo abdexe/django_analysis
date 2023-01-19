@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} | COMPANIES {% endblock %}
+{% block content %}
+
+<style>
+  body{
+    overflow: hidden;
+  }
+  .wrapper_p   .companie-container {
+    overflow: scroll;
+    position: fixed;
+    overflow-x: hidden;
+    top: 60px;
+    left: 15rem;
+    width: 74%;
+    height: 80%;
+  }
+  .wrapper_p{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+@media (max-width:1000px){
+    .wrapper_p   .companie-container img {
+      width: 60px;
+      height: 60px;
+  }
+  .wrapper_p   .companie-container{
+    left: 6rem;
+    width: 85%;
+    top: 80px;
+  }
+  .wrapper_p .companie-container {
+    gap: 3rem;
+    grid-template-columns: repeat(2,1fr);
+}
+}
+@media (max-width:900px){
+  .wrapper_p   .companie-container{
+    left: 3rem;
+    width: 90%;
+    top: 80px;
+  }
+}
+@media (max-width:700px){
+  .wrapper_p  .companie-container{
+    width: 80%;
+    top: 70px;
+
+}
+}
+ .companie-container {
+  margin-top: 1rem;
+  margin-left: 1rem;
+  width: 100%;
+  margin-right: 1rem;
+  border-right: 1px solid rgb(239, 238, 238);
+  padding:15px;
+  background-color: rgb(253, 253, 253);
+  box-shadow: 2px 2px 10px #ddd;
+  margin-bottom: 5rem;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 6rem;
+}
+.companie-container .companie-card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    cursor: pointer;
+    border: 1px solid rgb(239, 238, 238);
+    padding: 10px;
+}
+.companie-container img {
+    width: 80px;
+    height: 80px;
+}
+.companie-container img:hover{
+    opacity: 0.8;
+}
+.notfound{
+  text-align: center;
+}
+</style>
+<section class="wrapper_p">
+    <div class="wrapper-sidebar">
+     {% include 'partials/_sidebar.html' %}   
+    </div>
+    <div class="companie-container">
+      {% if companies %}
+        {% for companie in companies %}
+          <div class="companie-card">
+            <img src="{{ companie.logo.url }}" alt="">
+            <p>{{ companie.name }}</p>
+          </div>
+        {% endfor %}
+      {% else %}
+      <h2 class="notfound">No Companies In the Database</h2>
+      {% endif %}
+
+    </div>
+    
+</section>
+
+{% endblock %}
