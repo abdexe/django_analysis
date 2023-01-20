@@ -17,7 +17,7 @@ def login(request):
       if user is not None:
         auth.login(request, user)
         messages.success(request, 'You are now logged in')
-        return redirect('dashbord')
+        return redirect('profile')
       else:
         messages.error(request,'Invalid credentials')
         return redirect('login')
@@ -69,7 +69,7 @@ def logout(request):
         auth.logout(request)
         messages.success(request,'You are now logged out')
         return redirect('index')
-
+@login_required(login_url='/accounts/login')
 def companie(request):
   companies = Companie.objects.all()
 
@@ -78,7 +78,7 @@ def companie(request):
   }
   return render(request,'accounts/companie.html',context)
 
-
+@login_required(login_url='/accounts/login')
 def profile(request):
   users = CustomUser.objects.all()
   

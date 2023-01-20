@@ -2,8 +2,9 @@ from django.shortcuts import render,redirect
 from django.contrib import messages,auth
 from accounts.models import CustomUser
 from surveys.models import Survey
+from django.contrib.auth.decorators import login_required
 
-
+@login_required(login_url='/accounts/login')
 def survey(request):
     if request.method == 'POST':
       #Get form values
@@ -30,7 +31,8 @@ def survey(request):
       if comment == '':
         messages.error(request,'Please Fill the form')
       else:
-        survey = Survey(user_id=user_id,user_age=user_age,user_country=user_country,
+        id = Survey.objects.count() + 1
+        survey = Survey(id=id,user_id=user_id,user_age=user_age,user_country=user_country,
         hear_brand=hear_brand,speaking_brand=speaking_brand,buy_before=buy_before,
         rating_experience=rating_experience,rating_feedback=rating_feedback,use_before=use_before,
         see_brand=see_brand,sharing_probabilite=sharing_probabilite,other_brand=other_brand,
