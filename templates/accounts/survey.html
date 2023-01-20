@@ -8,42 +8,101 @@
         overflow: hidden;
         scroll-behavior: smooth;
     }
-    .wrapper_p{
-        overflow: hidden;
+    .wrapper_p .survey-container{
+        width: 99%;
     }
-    .wrapper_p .survey-container{
-    overflow-y: scroll;
-    position: fixed;
-    overflow-x: hidden;
-}
+    .wrapper_p   .companie-container {
+        overflow: scroll;
+        position: fixed;
+        overflow-x: hidden;
+        top: 80px;
+        left: 17rem;
+        width: 74%;
+        height: 80%;
+      }
+   
 @media (max-width:1000px){
-    .wrapper_p .survey-container{
-    left: 7rem;
-    padding: 1rem;
-    width: 85%;
+    .wrapper_p   .companie-container {
+        width: 83%;
+        left: 8rem;  
     }
 }
 @media (max-width:900px){
-    .wrapper_p .survey-container{
-    left: 4rem;
-    padding: 1rem;
-    width: 87%;
-    top: 95px;
+    .wrapper_p   .companie-container {
+        left: 4rem;  
+        width: 92%;
+        top: 100px;
+    }
+}
+@media (max-width:700px){
+    .wrapper_p   .companie-container { 
+        width: 90%;
     }
 }
 @media (max-width:600px){
-    .wrapper_p .survey-container{
-    left: 4rem;
-    padding: 1rem;
-    width: 80%;
-    top: 85px;
+    .wrapper_p   .companie-container { 
+        width: 85%;
+        top: 80px;
     }
-    .survey-container .logo {
-        top: 3rem;
+    .wrapper_p   .companie-container button { 
+        padding: 5px 5px;
     }
-    .survey-container .question {
-        padding-right: 0;
-      }
+    .wrapper_p .companie-container .survey-container img{
+        width: 50px;
+        height: 50px;
+    }
+    .wrapper_p .companie-container .survey-container .logo{
+        top: -1rem;
+    }
+    .wrapper_p .survey-container .textarea{
+        width: 250px;
+    }
+    .wrapper_p .survey-container .text{
+        width: 250px;
+    }
+    .wrapper_p .survey-container .scale-rating{
+        width: 270px;
+        display: grid;
+        grid-template-columns: repeat(5,1fr);
+    }
+    .wrapper_p .survey-container #think{
+        width: 250px;
+    }
+    .wrapper_p .survey-container #ok{
+        width: 280px;
+    }
+}
+@media (max-width:500px){
+    .wrapper_p   .companie-container { 
+        width: 80%;
+    }
+    .wrapper_p .survey-container .textarea{
+        width: 220px;
+    }
+    .wrapper_p .survey-container .text{
+        width: 220px;
+    }
+    .wrapper_p .survey-container .scale-rating{
+        width: 260px;
+    }
+    .wrapper_p .survey-container p{
+        width: 250px;
+    }
+    .wrapper_p .survey-container #proba{
+        width: 240px;
+    }
+    .wrapper_p .survey-container .scale-rating { 
+        transform: translateX(10px);
+    }
+    .wrapper_p .companie-container img{
+        margin-top: 4.5rem;
+    }
+    .wrapper_p .survey-container #ok{
+        width: 250px;
+        font-size: 13px;
+        padding: 0;
+        margin: 0;
+    }
 }
    
 </style>
@@ -51,12 +110,13 @@
     <div class="wrapper-sidebar">
      {% include 'partials/_sidebar.html' %}   
     </div>
+    <div class="companie-container">
         <div class="survey-container">
             <div class="logo">
                 <img src="{% static 'images/adidas.png' %}" alt="">
             </div>
             <div class="container" >
-                <p class="question">هل سمعت عن اسم العلامة التجارية التالية من قبل؟</p>
+                <p id="ok"  class="question">هل سمعت عن اسم العلامة التجارية التالية من قبل؟</p>
                 <div class="form-control">
                     <label>نعم</label>
                     <input type="radio" name="hear"  value="نعم" onclick="showText(0)">
@@ -184,52 +244,52 @@
                    </span>
                    <div class="line"></div>
                    <!-- probabilites -->
-                   <label class="label">احتمالية أن توصي صديق بمنتجاتنا أو خدماتنا؟</label>
+                   <label id="proba" class="label">احتمالية أن توصي صديق بمنتجاتنا أو خدماتنا؟</label>
                   <span class="scale-rating">
-                    <label value="10">
+                    <label value="10" style="padding: 1rem;">
                     <input type="radio" value="10" name="rating" required >
                     <label style="width:100%;"></label>
                     </label>
-                    <label value="20">
+                    <label value="20" style="padding: 1rem;">
                     <input type="radio" value="20" name="rating" required >
                     <label style="width:100%;"></label>
                     </label>
-                    <label value="30">
+                    <label value="30" style="padding: 1rem;">
                     <input type="radio" value="30" name="rating" required>
                     <label style="width:100%;"></label>
                     </label>
-                    <label value="40">
+                    <label value="40" style="padding: 1rem;">
                     <input type="radio" value="40" name="rating" required>
                     <label style="width:100%;"></label>
                     </label>
-                    <label value="50">
+                    <label value="50" style="padding: 1rem;">
                     <input type="radio" value="50" name="rating" required>
                     <label style="width:100%;"></label>
                     </label>
-                    <label value="60">
+                    <label value="60" style="padding: 1rem;">
                     <input type="radio" value="60" name="rating" required>
                     <label style="width:100%;"></label>
                     </label>
-                    <label value="70">
+                    <label value="70" style="padding: 1rem;">
                     <input type="radio" value="70" name="rating" required>
                     <label style="width:100%;"></label>
                     </label>
-                    <label value="80">
+                    <label value="80" style="padding: 1rem;">
                     <input type="radio" value="80" name="rating" required>
                     <label style="width:100%;"></label>
                     </label>
-                    <label value="90">
+                    <label value="90" style="padding: 1rem;">
                     <input type="radio"  value="90" name="rating" required>
                     <label style="width:100%;"></label>
                     </label>
-                    <label value="100">
+                    <label style="padding: 1rem;" value="100">
                     <input type="radio"  value="100" name="rating" required>
                     <label style="width:100%;"></label>
                     </label>
                   </span>
                   <div class="line"></div>
                   <!-- remebers -->
-                  <p  class="question" style="margin-right: 5px;">هل يتبادر في ذهنك علامة تجارية أخرى أثناء التفكير في منتجاتنا؟ </p>
+                  <p id="think" class="question" style="margin-right: 5px;">هل يتبادر في ذهنك علامة تجارية أخرى أثناء التفكير في منتجاتنا؟ </p>
                 <div style="margin-right: 10px;" class="form-control">
                     <label>نعم</label>
                     <input type="radio" name="other" value="نعم" required>
@@ -259,7 +319,7 @@
                 
             </div>
         </div>
-    
+    </div>
 </section>
 <script>
     function showText(x){
