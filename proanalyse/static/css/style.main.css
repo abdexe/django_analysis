@@ -226,16 +226,14 @@ cursor:pointer;
 z-index:3;
 }
 span.scale-rating label:hover{
-background:#fddf8d;
+background:hsl(44, 97%, 77%);
 }
 span.scale-rating input[type=radio]:last-child{
 border-right:0;
 }
 span.scale-rating label input[type=radio]:checked ~ label{
-  -webkit-appearance: none;
-
-  margin: 0;
 background:#fddf8d;
+
 }
 span.scale-rating label:before
 {

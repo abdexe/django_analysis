@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages,auth
 from accounts.models import CustomUser
-from surveys.models import Survey
+from surveys.models import Survey, Surveyno
 import pdfkit
 import numpy as np
 import pandas as pd
@@ -12,13 +12,27 @@ from django.db import connection
 #Data Analysis with Numpy & Pandas
 
 def analytics(request):
+    # transfer answers "YES" to Pandas datafrmae
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM surveys_survey")
         df = pd.read_sql_query("SELECT * FROM surveys_survey", connection)
+    
+    # transfer answers "NO" to Pandas datafrmae
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM surveys_surveyno")
+        df2 = pd.read_sql_query("SELECT * FROM surveys_surveyno", connection)
+
         # gender analysis
+        male_no_numbers=df2['user_gender'].str.contains('Male').value_counts().values[0]
+        male_yes_numbers=df['user_gender'].str.contains('Male').value_counts().values[0]
+        male_numbers = male_yes_numbers + male_no_numbers
         
-        male_numbers=df['user_gender'].str.contains('Male').value_counts().values[0]
-        female_numbers=df['user_gender'].str.contains('Male').value_counts().values[1]
+        female_no_numbers=df2['user_gender'].str.contains('Male').value_counts().values[1]
+        female_yes_numbers=df['user_gender'].str.contains('Male').value_counts().values[1]
+        female_numbers = female_no_numbers + female_yes_numbers
+
+        never_heard_about_brand = male_no_numbers + female_no_numbers
+        heard_about_brand = male_yes_numbers + female_yes_numbers
         # hearing about brand
         last_month=df['hear_brand'].str.contains('A').value_counts().values[1]
         six_month_ago=df['hear_brand'].str.contains('B').value_counts().values[1]
@@ -60,6 +74,8 @@ def analytics(request):
         context = {
             "male": male_numbers,
             "female":female_numbers,
+            "heard":heard_about_brand,
+            "never_heard":never_heard_about_brand,
             "last_month":last_month,
             "six_month_ago":six_month_ago,
             "last_year":last_year,
@@ -72,7 +88,7 @@ def analytics(request):
             "from_application":from_application,
             "from_other":from_other,
 
-            "answers":df.shape[0],
+            "answers":df.shape[0]+df2.shape[0],
 
             "star1":star1,
             "star2":star2,
@@ -89,8 +105,7 @@ def analytics(request):
         
     return render(request,'accounts/analytics.html',context)
 
-def generate_pdf(request):
-    return
+
         
         
         

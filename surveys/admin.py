@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Survey
+from .models import Survey, Surveyno
 
 class SurveyAdmin(admin.ModelAdmin):
        
@@ -11,3 +11,14 @@ class SurveyAdmin(admin.ModelAdmin):
     
 
 admin.site.register(Survey, SurveyAdmin)
+
+class SurveynoAdmin(admin.ModelAdmin):
+       
+    list_display = ('user_id','user_age','user_country','user_gender','user_city','problems','products',
+    'looking','speaking_brand','buy_before','rating_feedback',
+    'sharing_probabilite','comment')
+    list_display_links = ('user_id','user_country','user_city','speaking_brand','looking','products')
+    list_per_page = 30
+    
+
+admin.site.register(Surveyno, SurveynoAdmin)

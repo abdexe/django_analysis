@@ -110,8 +110,10 @@
           <p style="margin-top: 1rem;">Number of answers: <span style="color: orangered;">{{answers}}</span></p>
           <p style="margin-top: 1rem;">Male: <span style="color: orangered;">{{male}}</span></p>
           <p style="margin-top: 1rem;">Female: <span style="color: orangered;">{{female}}</span></p>
+          <p style="margin-top: 1rem;">Heard About The Brand: <span style="color: rgb(10, 96, 46);">{{heard}}</span></p>
+          <p style="margin-top: 1rem;">Never Heard About The Brand: <span style="color: rgb(10, 96, 46);">{{never_heard}}</span></p>
         </div>
-        
+  
         <div class="chart-card">
             <div class="charts">
                 <canvas  id="myChart"></canvas>
@@ -213,7 +215,7 @@
                     'وسائل التواصل الاجتماعي',
                      'اللوحات الاعلانية', 'اعلانات تطبيقات الجوال','الاعلانات التلفزونية', 'طريقة أخرى'],
                     datasets: [{
-                      label: 'مصدر الزوار',
+                      label: 'مصدر الزوار من الاعلانات',
                       data: [{{from_family}},{{from_socialmedia}},{{from_tbleshow}},
                       {{from_tvshow}},{{from_application}},{{from_other}}],
                       borderWidth: 1
@@ -256,8 +258,6 @@
           </script>
       </div>
         
-        <!-- <button class="print"> <a href="{% url 'generate_pdf' %}">print report</a> </button>
-        <button class="print send" style="margin-left: 200px;">send email</button> -->
     </div>
     
 </section>
