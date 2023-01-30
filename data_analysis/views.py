@@ -8,9 +8,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import io
 from django.db import connection
+from django.contrib.auth.decorators import login_required
 
 #Data Analysis with Numpy & Pandas
-
+@login_required(login_url='/accounts/login')
 def analytics(request):
     # transfer answers "YES" to Pandas datafrmae
     with connection.cursor() as cursor:
@@ -71,6 +72,8 @@ def analytics(request):
         Dandarah = df['user_city'].value_counts()['Dandarah']
 
         surveys = Survey.objects.all()
+        # DATA ANALYSIDS IN THE "NO" CASE
+        
         context = {
             "male": male_numbers,
             "female":female_numbers,
