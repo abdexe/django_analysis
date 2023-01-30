@@ -40,11 +40,11 @@
         <nav>
             {% if user.is_authenticated %}
             <ul>
-                <li><a style="background-color: transparent;color:#4682B4" href="{% url 'profile' %}">{{user.username}}</a></li>
+                <li><a style="background-color: transparent;color:#4682B4" href="#">Home</a></li>
                 <li><a href="#">Services</a></li>
                 <li><a href="#">Contact Us</a></li>
                 <li><a href="#">Offers</a></li>
-                <li><a href="javascript:{document.getElementById('logout').submit()}">Logout</a></li>
+                <li><a href="{% url 'profile' %}">{{user.username}}</a></li>
             </ul>
             <form action="{% url 'logout' %}" method="POST" id="logout">
                 {% csrf_token %}

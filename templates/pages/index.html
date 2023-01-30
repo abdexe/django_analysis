@@ -137,8 +137,10 @@
         <p><img src="data.svg" alt="">000-000-000</p>
        </div>
     </div>
+   
     <div class="right">
       <form action="{% url 'contact' %}" id="formIndex" method="POST" >
+        {% include 'partials/_alert.html' %}
         {% csrf_token %}
         <div class="form-control">
             <input type="text" name="name" placeholder="Name" class="name" >
@@ -155,33 +157,5 @@
      <a href="javascript:{document.getElementById('formIndex').submit()}" ><button class="send">Send Message</button></a>
     </div>
 </section>
-<!-- FORM SECTION -->
-<!--  
-<section class="form-section" id="form-section">
-   <div class="form-left">
-   <a class="btnForm" href="#form-section" >Contact Us</a>
-    <h2>Feel Free to send us a Message <br> About your website needs</h2>
-    <p> temporibus laudantium distinctio voluptate? Adipisci fugit voluptates hic autem! Adipisci fugit voluptates hic autem!</p>
-    <div class="contact-us">
-        <p>For any anquiry ,Call Us: </p>
-        <p class="phone"><i class=""></i>000-000-0000</p>
-    </div>
-   </div>
-   <div class="form-right">
-    <form action="{% url 'contact' %}" id="formIndex" method="POST" class="form">
-        {% csrf_token %}
-    <div class="form-control">
-        <input type="text" name="name" placeholder="Name" class="name" >
-        <input type="text" name="surname" placeholder="Surname" class="surname" required>
-    </div>
-    <div class="form-control">
-        <input type="text" name="email" placeholder="Your Email" class="email" required >
-    </div>
-    <div class="form-control" style="margin-bottom: 1rem;">
-        <textarea  placeholder="Message" name="message" id="" cols="30" rows="10" required></textarea>
-    </div>
-    </form>
-    <a href="javascript:{document.getElementById('formIndex').submit()}"><button class="send">Send Message</button></a>
-   </div>
-</section>-->
+
 {% endblock %}

@@ -16,7 +16,7 @@ def login(request):
 
       if user is not None:
         auth.login(request, user)
-        messages.success(request, 'You are now logged in')
+        messages.success(request, 'You are now logged Out')
         return redirect('profile')
       else:
         messages.error(request,'Invalid credentials')
@@ -64,6 +64,7 @@ def register(request):
 def dashbord(request):
     return render(request,'accounts/dashbord.html')
 
+@login_required(login_url='/accounts/login')
 def logout(request):
     if request.method == 'POST':
         auth.logout(request)
