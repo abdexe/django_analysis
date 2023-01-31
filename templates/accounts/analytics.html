@@ -149,332 +149,292 @@
               </script>
               
         </div>
-        <!-- PIE CHART -->
-        <div class="chart-card polar">
-            <canvas  id="myChart2"></canvas>
-            <script>
-                const ctx2 = document.getElementById('myChart2');
-             // pie chart
-             new Chart(ctx2, {
-                  type: 'polarArea',
-                  data: {
-                    labels: ['1 STAR', '2 STAR', ' 3 STAR', '4 STAR', '5 STAR'],
-                    datasets: [{
-                      label: '# of Votes',
-                      data: [{{star1}}, {{star2}}, {{star3}}, {{star4}},{{star5}}],
-                      borderWidth: 1
-                    }]
-                  },
-                  options: {
-                    scales: {
-                      y: {
-                        beginAtZero: true
-                      }
-                    }
-                  }
-                });
-            </script>
-          </div>
-         <!-- LINE CHART -->
-          <div class="chart-card pie">
-            <canvas  id="myChart3"></canvas>
-            <script>
-                const ctx3 = document.getElementById('myChart3');
-             // pie chart
-             new Chart(ctx3, {
-                  type: 'pie',
-                  data: {
-                    labels: ['الشهر الماضي', 'منذ 6 أشهر', 'منذ عام تقريبا', 
-                    'منذ بداية الاعلان عن العلامة التجارية',],
-                    datasets: [{
-                      label: '# of Votes',
-                      data: [{{last_month}},{{six_month_ago}},{{last_year}},{{from_start}}],
-                      borderWidth: 1
-                    }]
-                  },
-                  options: {
-                    scales: {
-                      y: {
-                        beginAtZero: true
-                      }
-                    }
-                  }
-                });
-            </script>
-        </div>
-        <!-- POLAR CHART -->
-        <div class="chart-card">
-            <canvas  id="myChart4"></canvas>
-            <script>
-                const ctx4 = document.getElementById('myChart4');
-             // line chart
-             new Chart(ctx4, {
-                  type: 'line',
-                  data: {
-                    labels: ['من العائلة أو الأصدقاء أو الزملاء', 
-                    'وسائل التواصل الاجتماعي',
-                     'اللوحات الاعلانية', 'اعلانات تطبيقات الجوال','الاعلانات التلفزونية', 'طريقة أخرى'],
-                    datasets: [{
-                      label: 'مصدر الزوار من الاعلانات',
-                      data: [{{from_family}},{{from_socialmedia}},{{from_tbleshow}},
-                      {{from_tvshow}},{{from_application}},{{from_other}}],
-                      borderWidth: 1
-                    }]
-                  },
-                  options: {
-                    scales: {
-                      y: {
-                        beginAtZero: true
-                      }
-                    }
-                  }
-                });
-            </script>
-        </div>
-        <!-- POLAR CHART -->
-        <div class="chart-card">
-          <canvas  id="myChart5"></canvas>
-          <script>
-              const ctx5 = document.getElementById('myChart5');
-           // pie chart
-           new Chart(ctx5, {
-                type: 'line',
-                data: {
-                  labels: ['القاهرة','المنية','الجيزة','دندرة','الاسكندرية'],
-                  datasets: [{
-                    label: 'مصدر الزوار حسب بعض المدن',
-                    data: [{{cairo}},{{MinyA}},{{Giza}},{{Dandarah}},{{Alexandria}}],
-                    borderWidth: 1
-                  }]
-                },
-                options: {
-                  scales: {
-                    y: {
-                      beginAtZero: true
-                    }
-                  }
-                }
-              });
-          </script>
-      </div>
-        <!-- NO HEAR ANALYSIS  -->
-        <!-- Bar -->
-        <div class="chart-card">
-          <div id="chartContainer"></div>
-          <script src="https://cdn.jsdelivr.net/npm/apexcharts" ></script>
-          <script>
-            var options = {
-              chart: {
-                type: 'bar'
-              },
-              series: [{
-                name: 'sales',
-                data: [30, 40, 45, 50, 49, 60, 70, 91, 125]
-              }],
-              xaxis: {
-                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep']
-              },
-              title: {
-                text: 'bar',
-                align: 'left'
-              }
-            }
-            
-            var chart = new ApexCharts(document.querySelector("#chartContainer"), options);
-            
-            chart.render();
-          </script>
-          
-        </div>
-        <!-- PIE -->
-        <div class="chart-card">
-          <div id="chartContainer"></div>
+       
 
+      <!-- No Answer Analysis -->
+       <!-- BAR CHART -->
+       <div class="chart-card">
+        <div  id="myChart6"></div>
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts" ></script>
         <script>
-        var options = {
+         // bar chart
+         var options = {
           chart: {
-          type: 'pie'
+            type: 'bar'
           },
-          series: [44, 55, 41, 17, 15],
-          labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
+          series: [{
+            name: 'sales',
+            data: [30, 40, 45, 50, 49]
+          }],
+          xaxis: {
+            categories: ['أسعار مرتفعة', 'لا تغطي كل متطلباتي', 'جودة لا ترقى لمعاييري', 'ندرة المنتج على طول السنة', 'مشاكل أخرى']
+          },
           title: {
-            text: 'pie',
-            align: 'left'
+            text: 'الصعوبات التي يواجهها  الزبائن مع العلامة التجارية ',
+            align: 'center'
           }
-        }
-        
-
-        var chart = new ApexCharts(document.querySelector("#chartContainer"), options);
-
+        };
+        var chart = new ApexCharts(document.querySelector("#myChart6"), options);
         chart.render();
-        </script>
-
-        </div>
-
-        <!-- LINE -->
-        <div class="chart-card">
-          <div id="chartContainer"></div>
-
+      </script>
+    </div>
+      <!-- PIE CHART -->
+    <div class="chart-card">
+      <div  id="myChart7"></div>
+      <script>
+       // pie chart
+       var options = {
+        chart: {
+        type: 'pie'
+        },
+        series: [44, 55, 41, 17],
+        labels: ['الجودة العالية', 'الثمن المناسب', 'الاثنين معا', 'أشياء أخرى'],
+        title: {
+          text: ' الأشياء التي يبحث عنها الزبائن في العلامة التجارية',
+          align: 'center'
+        }
+      };
+      var chart = new ApexCharts(document.querySelector("#myChart7"), options);
+      chart.render();
+    </script>
+  </div>
+      
+      <!-- LINE CHART -->
+      <div class="chart-card">
+        <div  id="myChart8"></div>
         <script>
-        var options = {
+         // line chart
+         var options = {
           chart: {
             type: 'line'
           },
           series: [{
              name: 'Sales',
-             data: [30, 40, 45, 50, 49, 60, 70, 91, 125]
+             data: [70, 91, 125]
           }],
           xaxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep']
+            categories: ['أكسسوارت', 'ملابس', 'أحذية']
           },
           title: {
-            text: 'line',
-            align: 'left'
-          }
-        }
-
-        var chart = new ApexCharts(document.querySelector("#chartContainer"), options);
-
-        chart.render();
-        </script>
-
-        </div>
-        <!-- SCATTER -->
-
-        <div class="chart-card">
-          <div id="chartContainer"></div>
-
-        <script>
-        var options = {
-          chart: {
-            type: 'scatter'
-          },
-          series: [{
-            name: 'Data',
-            data: [[16, 23], [43, 45], [50, 56], [54, 60], [58, 68]]
-          }],
-          title: {
-            text: 'SCATTER',
-            align: 'left'
-          }
-        }
-
-        var chart = new ApexCharts(document.querySelector("#chartContainer"), options);
-
-        chart.render();
-        </script>
-
-        </div>
-        <!-- RADIAL -->
-        <div class="chart-card">
-          
-        <div id="chartContainer"></div>
-        <script>
-        var options = {
-          chart: {
-            type: 'radialBar'
-          },
-          series: [75],
-          plotOptions: {
-            radialBar: {
-              hollow: {
-                size: '70%',
-          }
-            },
-          },
-          labels: ['Categories'],
-          title: {
-            text: 'RADIAL',
+            text: '  نسب المنتجات التي يهتم بها الزوار',
             align: 'left'
           }
         };
-
-        var chart = new ApexCharts(document.querySelector("#chartContainer"), options);
-
+        var chart = new ApexCharts(document.querySelector("#myChart8"), options);
         chart.render();
-        </script>
+      </script>
+    </div>
 
-        </div>
-        <!-- HEAT MAP -->
-        <div class="chart-card">
-          <div id="chartContainer"></div>
-
+     <!-- SCATTER -->
+     <div class="chart-card">
+      <div  id="myChart9"></div>
       <script>
-      var options = {
+       // scatter chart
+       var options = {
         chart: {
-          type: 'heatmap'
+          type: 'scatter'
         },
         series: [{
-          name: 'Metric1',
-          data: [[1, 3, 4], [2, 4, 5], [3, 2, 3]]
+          name: 'Data',
+          data: [[16, 23], [43, 45], [50, 56], [54, 60], [58, 68]]
         }],
-
-        title:{
-          text: 'heatmap',
-          align: 'center'
+        title: {
+          text: 'احتمالية وجود أشخاص يتحدثون عن علامتنا التجارية',
+          align: 'left'
         }
-       
-
-        var chart = new ApexCharts(document.querySelector("#chartContainer"), options);
-
+      };
+      var chart = new ApexCharts(document.querySelector("#myChart9"), options);
       chart.render();
-      </script>
-
-        </div>
-        <!-- area -->
-        <div class="chart-card">
-          <div id="chartContainer"></div>
-
-        <script>
-        var options = {
-          chart: {
-            type: 'area'
+    </script>
+  </div>
+    <!-- RADIAL -->
+     <div class="chart-card">
+      <div  id="myChart10"></div>
+      <script>
+       // RADIAL chart
+       var options = {
+        chart: {
+          type: 'radialBar'
+        },
+        series: [75],
+        plotOptions: {
+          radialBar: {
+            hollow: {
+              size: '70%',
+        }
           },
-          series: [{
-            name: 'Sales',
-            data: [31, 40, 28, 51, 42, 109, 100]
-          }],
-          title: {
-            text: 'Teams Performance',
-            align: 'left'
-          },
-          xaxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul']
+        },
+        labels: ['من الزوار'],
+        title: {
+          text: 'نسبة الأشخاص الذين لديهم فضول تجاه العلامة التجارية',
+          align: 'left'
+        }
+      };
+      var chart = new ApexCharts(document.querySelector("#myChart10"), options);
+      chart.render();
+    </script>
+  </div>
+
+  <!-- area -->
+  <div class="chart-card">
+    <div  id="myChart11"></div>
+    <script>
+     // AREA chart
+     var options = {
+      chart: {
+        type: 'area'
+      },
+      series: [{
+        name: 'Sales',
+        data: [83, 40, 28, 51, 292, 309, 500,20,100,12]
+      }],
+      title: {
+        text: 'احتمالية مشاركة العلامى التجارية مع أشخاص أخرين',
+        align: 'left'
+      },
+      xaxis: {
+        categories: ['10%', '20%', '30%', '40%', '50%', '60%', '70%','80%','90%','100%']
+      }
+    }
+
+    var chart = new ApexCharts(document.querySelector("#myChart11"), options);
+    chart.render();
+  </script>
+</div>
+   
+<!-- DONUT -->
+<div class="chart-card">
+  <div  id="myChart12"></div>
+  <script>
+   // DONUT chart
+   var options = {
+    chart: {
+      type: 'donut'
+    },
+    series: [44, 55, 41, 17, 15],
+    labels: ['سيئ', 'معقول', 'جيد', 'جيد جدا', 'ممتاز'],
+    title: {
+      text: 'مدى رضا الزوار عن منتجات و خدمات العلامة التجارية',
+      align: 'center'
+    }
+  };
+
+
+  var chart = new ApexCharts(document.querySelector("#myChart12"), options);
+  chart.render();
+</script>
+</div>
+
+<!-- ANSWERA YES ANALYSIS -->
+ <!-- PIE CHART -->
+ <div class="chart-card polar">
+  <canvas  id="myChart2"></canvas>
+  <script>
+      const ctx2 = document.getElementById('myChart2');
+   // pie chart
+   new Chart(ctx2, {
+        type: 'polarArea',
+        data: {
+          labels: ['1 STAR', '2 STAR', ' 3 STAR', '4 STAR', '5 STAR'],
+          datasets: [{
+            label: '# of Votes',
+            data: [{{star1}}, {{star2}}, {{star3}}, {{star4}},{{star5}}],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
           }
         }
-
-        var chart = new ApexCharts(document.querySelector("#chartContainer"), options);
-
-        chart.render();
-        </script>
-
-        </div>
-        <!-- DONUT -->
-        <div class="chart-card">
-          <div id="chartContainer"></div>
-
-        <script>
-        var options = {
-          chart: {
-            type: 'donut'
-          },
-          series: [44, 55, 41, 17, 15],
-          labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
-          title: {
-            text: 'Teams Performance',
-            align: 'center'
+      });
+  </script>
+</div>
+<!-- LINE CHART -->
+<div class="chart-card pie">
+  <canvas  id="myChart3"></canvas>
+  <script>
+      const ctx3 = document.getElementById('myChart3');
+   // pie chart
+   new Chart(ctx3, {
+        type: 'pie',
+        data: {
+          labels: ['الشهر الماضي', 'منذ 6 أشهر', 'منذ عام تقريبا', 
+          'منذ بداية الاعلان عن العلامة التجارية',],
+          datasets: [{
+            label: '# of Votes',
+            data: [{{last_month}},{{six_month_ago}},{{last_year}},{{from_start}}],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
           }
-        };
-
-        var chart = new ApexCharts(document.querySelector("#chartContainer"), options);
-
-        chart.render();
-        </script>
-
-        </div>
-            
-            
-      </div>
+        }
+      });
+  </script>
+</div>
+<!-- POLAR CHART -->
+<div class="chart-card">
+  <canvas  id="myChart4"></canvas>
+  <script>
+      const ctx4 = document.getElementById('myChart4');
+   // line chart
+   new Chart(ctx4, {
+        type: 'line',
+        data: {
+          labels: ['من العائلة أو الأصدقاء أو الزملاء', 
+          'وسائل التواصل الاجتماعي',
+           'اللوحات الاعلانية', 'اعلانات تطبيقات الجوال','الاعلانات التلفزونية', 'طريقة أخرى'],
+          datasets: [{
+            label: 'مصدر الزوار من الاعلانات',
+            data: [{{from_family}},{{from_socialmedia}},{{from_tbleshow}},
+            {{from_tvshow}},{{from_application}},{{from_other}}],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+  </script>
+</div>
+<!-- POLAR CHART -->
+<div class="chart-card">
+<canvas  id="myChart5"></canvas>
+<script>
+    const ctx5 = document.getElementById('myChart5');
+ // pie chart
+ new Chart(ctx5, {
+      type: 'line',
+      data: {
+        labels: ['القاهرة','المنية','الجيزة','دندرة','الاسكندرية'],
+        datasets: [{
+          label: 'مصدر الزوار حسب بعض المدن',
+          data: [{{cairo}},{{MinyA}},{{Giza}},{{Dandarah}},{{Alexandria}}],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+</script>
+</div>
+    </div>
     
 </section>
 
