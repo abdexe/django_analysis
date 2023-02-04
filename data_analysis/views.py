@@ -72,7 +72,7 @@ def analytics(request):
         Dandarah = df['user_city'].value_counts()['Dandarah']
 
         surveys = Survey.objects.all()
-        # DATA ANALYSIDS IN THE "NO" CASE
+        
         
         context = {
             "male": male_numbers,
@@ -106,6 +106,16 @@ def analytics(request):
             "Alexandria":Alexandria
         }
         
+        # DATA ANALYSIDS IN THE "NO" CASE
+         
+         #Difficulties faced by customers with the brand 
+         #Things customers are looking for in a brand
+         #Percentages of products that visitors are interested in
+         #There may be people talking about our brand
+         #Percentage of people curious about the brand
+         #The possibility of sharing the brand with other people
+         #The extent to which visitors are satisfied with the brand's products and services
+        #context = {**context1, **context2}
     return render(request,'accounts/analytics.html',context)
 
 

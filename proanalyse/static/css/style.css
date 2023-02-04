@@ -1181,7 +1181,7 @@ nav ul li:nth-last-of-type(1) a:hover{
         background-color: var(--blue-color);
     }
     .contact .hidden{
-        font-size: 18px;
+        font-size: 16px;
         text-align: center;
         line-height: 1.8rem;
         color: #000;
@@ -1191,28 +1191,28 @@ nav ul li:nth-last-of-type(1) a:hover{
         border-radius: 20px;
     }
     .contact{
-        background-color: var(--primary-color);
         border-radius: 20px;
-        background-image: unset;
         background-color: var(--secondary-color)
     }
     
 }
 @media (max-width:480px){
     .contact .form-control input{
-        width: 250px;
+        width: 300px;
+        
     }
     .contact .form-control textarea{
-        width: 250px;
+        width: 300px;
         height: 200px;
     }
     .contact form .form-control .email{
-        width: 250px;
+        width: 300px;
     }
     .contact .send{
-        width: 250px;
+        width: 300px;
         background-color: var(--secondary-color);
     }
+   
 }
 /* FOOTER */
 .footer{
