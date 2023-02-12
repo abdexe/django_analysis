@@ -163,8 +163,8 @@
             type: 'bar'
           },
           series: [{
-            name: 'sales',
-            data: [30, 40, 45, 50, 49]
+            name: 'problems',
+            data: [{{high_price}},{{not_enough}},{{not_quality}},{{rare_product}}]
           }],
           xaxis: {
             categories: ['أسعار مرتفعة', 'لا تغطي كل متطلباتي', 'جودة لا ترقى لمعاييري', 'ندرة المنتج على طول السنة', 'مشاكل أخرى']
@@ -187,7 +187,7 @@
         chart: {
         type: 'pie'
         },
-        series: [44, 55, 41, 17],
+        series: [{{product_quality}}, {{good_price}}, {{quality_and_price}}, {{other_things}}],
         labels: ['الجودة العالية', 'الثمن المناسب', 'الاثنين معا', 'أشياء أخرى'],
         title: {
           text: ' الأشياء التي يبحث عنها الزبائن في العلامة التجارية',
@@ -209,8 +209,8 @@
             type: 'line'
           },
           series: [{
-             name: 'Sales',
-             data: [70, 91, 125]
+             name: 'المنتجات',
+             data: [{{p_access}},{{p_clothings}},{{p_shoes}}]
           }],
           xaxis: {
             categories: ['أكسسوارت', 'ملابس', 'أحذية']
@@ -225,28 +225,7 @@
       </script>
     </div>
 
-     <!-- SCATTER -->
-     <div class="chart-card">
-      <div  id="myChart9"></div>
-      <script>
-       // scatter chart
-       var options = {
-        chart: {
-          type: 'scatter'
-        },
-        series: [{
-          name: 'Data',
-          data: [[16, 23], [43, 45], [50, 56], [54, 60], [58, 68]]
-        }],
-        title: {
-          text: 'احتمالية وجود أشخاص يتحدثون عن علامتنا التجارية',
-          align: 'left'
-        }
-      };
-      var chart = new ApexCharts(document.querySelector("#myChart9"), options);
-      chart.render();
-    </script>
-  </div>
+     
     <!-- RADIAL -->
      <div class="chart-card">
       <div  id="myChart10"></div>
@@ -256,7 +235,7 @@
         chart: {
           type: 'radialBar'
         },
-        series: [75],
+        series: [{{speaking_brand}}],
         plotOptions: {
           radialBar: {
             hollow: {
@@ -285,8 +264,8 @@
         type: 'area'
       },
       series: [{
-        name: 'Sales',
-        data: [83, 40, 28, 51, 292, 309, 500,20,100,12]
+        name: 'الاحتمال',
+        data: [{{one}},{{two}},{{three}},{{four}},{{five}},{{six}},{{seven}},{{eight}},{{nine}},{{teen}}]
       }],
       title: {
         text: 'احتمالية مشاركة العلامى التجارية مع أشخاص أخرين',
@@ -311,7 +290,7 @@
     chart: {
       type: 'donut'
     },
-    series: [44, 55, 41, 17, 15],
+    series: [{{n_star1}},{{n_star2}},{{n_star2}},{{n_star3}},{{n_star4}}],
     labels: ['سيئ', 'معقول', 'جيد', 'جيد جدا', 'ممتاز'],
     title: {
       text: 'مدى رضا الزوار عن منتجات و خدمات العلامة التجارية',

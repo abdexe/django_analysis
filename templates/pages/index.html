@@ -143,7 +143,7 @@
         {% include 'partials/_alert.html' %}
         {% csrf_token %}
         <div class="form-control">
-            <input type="text" name="name" placeholder="Name" class="name" >
+            <input type="text" name="name" placeholder="Name" class="name" required>
             <input type="text" name="surname" placeholder="Surname" class="surname" required>
         </div>
         <div class="form-control">
